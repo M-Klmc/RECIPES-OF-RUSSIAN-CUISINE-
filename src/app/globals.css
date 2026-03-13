@@ -22,19 +22,13 @@
 }
 
 body {
-
   background-color: #fbf7f0;
   background-image: 
-
     radial-gradient(ellipse at 15% 40%, rgba(59, 31, 16, 0.08) 0%, transparent 35%),
     radial-gradient(ellipse at 85% 70%, rgba(59, 31, 16, 0.08) 0%, transparent 40%),
-    
-
     radial-gradient(circle at 30% 60%, rgba(139, 69, 19, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 70% 20%, rgba(139, 69, 19, 0.08) 1px, transparent 1px),
     radial-gradient(circle at 45% 85%, rgba(88, 57, 39, 0.12) 1px, transparent 1px),
-    
-
     repeating-linear-gradient(45deg, 
       rgba(88, 57, 39, 0.02) 0px,
       rgba(88, 57, 39, 0.02) 20px,
@@ -52,6 +46,52 @@ body {
   min-height: 100vh;
 }
 
+/* Ornaments */
+/* Left ornament */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100vh;
+  background-image: url('/OrnamentBack.jpg');
+  background-repeat: repeat-y;
+  background-size: contain;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  filter: brightness(1.2); 
+}
 
+/* Right ornament (mirrored) */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 100vh;
+  background-image: url('/OrnamentBack.jpg');
+  background-repeat: repeat-y;
+  background-size: contain;
+  opacity: 0.3;
+  transform: scaleX(-1);
+  pointer-events: none;
+  z-index: 0;
+  filter: brightness(1.2); 
+}
 
+/*hide ornament on mobile*/
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+}
 
+/* Content on top*/
+main, header, footer, section, div {
+  position: relative;
+  z-index: 1;
+}
