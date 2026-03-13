@@ -10,11 +10,12 @@
   },
   "dependencies": {
     "@heroui/form": "^2.1.32",
+    "@heroui/modal": "^2.2.29",
     "@heroui/navbar": "^2.2.30",
     "@heroui/react": "^2.8.10",
     "@heroui/system": "^2.4.28",
     "@heroui/theme": "^2.4.26",
-    "framer-motion": "^12.35.2",
+    "framer-motion": "^12.36.0",
     "next": "15.5.12",
     "react": "19.1.0",
     "react-dom": "19.1.0"

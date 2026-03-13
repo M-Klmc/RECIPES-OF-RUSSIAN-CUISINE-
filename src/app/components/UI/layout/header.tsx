@@ -11,6 +11,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RegisterModal from "../modals/register.modal";
+import LoginModal from "../modals/login.modal";
+import { useState } from "react";
 
 export const Logo = () => {
     return (
@@ -28,6 +31,10 @@ export const Logo = () => {
 
 export default function Header({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
+
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+
         const getNavItems = () => {
                     return siteConfig.navItems.map((item) => {
                             const isActive = pathname === item.href;
@@ -81,19 +88,19 @@ export default function Header({ children }: { children: React.ReactNode }) {
 
                 <NavbarContent justify="end" className="gap-3">
                     <NavbarItem>
-                        <Link 
-                            href="/login"
+                        <Button 
+                            variant="flat"
+                            onPress={() => {setIsLoginOpen(true);}}
                             className="px-4 py-2 text-[#582c0d] hover:text-[#B22222] transition-colors duration-300"
                         >
                             Login
-                        </Link>
+                        </Button>
                     </NavbarItem>
 
                     <NavbarItem>
                         <Button
-                            as={Link}
-                            href="/signup"
                             variant="flat"
+                            onPress={() => setIsRegisterOpen(true)}
                             className="
                                 bg-[#B22222] text-[#FDF5E6] 
                                 hover:bg-[#8B0000] hover:scale-105
@@ -107,6 +114,16 @@ export default function Header({ children }: { children: React.ReactNode }) {
                     </NavbarItem>
                 </NavbarContent>
             </Navbar>
+
+            
+                <RegisterModal 
+                    isOpen={isRegisterOpen}
+                    onClose={() => setIsRegisterOpen(false)}
+                />
+                <LoginModal 
+                    isOpen={isLoginOpen}
+                    onClose={() => setIsLoginOpen(false)}
+                />
             {children}
         </>
     );
