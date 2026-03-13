@@ -1,4 +1,5 @@
 "use client";
+import { LayoutConfig } from "@/config/layout.config";
 import { siteConfig } from "@/config/site.config";
 import {
     Navbar,
@@ -58,7 +59,10 @@ export default function Header({ children }: { children: React.ReactNode }) {
                 classNames={{
                     base: "bg-[#8B4513] bg-opacity-90 backdrop-blur-sm shadow-xl",
                     wrapper: "max-w-7xl mx-auto px-4 sm:px-6",
-                    brand: "gap-2",
+                    brand: "gap-2" ,
+                }}
+                style={{
+                    height: LayoutConfig.headerHeight      
                 }}
             >
                 <NavbarBrand>
